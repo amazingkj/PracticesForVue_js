@@ -16,14 +16,14 @@
 <script>
 import AlertModal  from './common/AlertModal.vue'
 export default {
-  data: function() {
+  data() {
     return {
         newTodoItem: "",
         showModal: false
     }
   },
   methods: {
-    addTodo: function(){
+    addTodo(){
       if (this.newTodoItem !==''){
         // this.$emit('이벤트 이름',인지1,인자2, ...);
         this.$emit('addTodoItem',this.newTodoItem);
@@ -32,12 +32,12 @@ export default {
         this.showModal = !this.showModal
       }
     },
-    clearInput: function() {
+    clearInput() {
       this.newTodoItem = '';
     }
   },
   components: {
-    AlertModal : AlertModal 
+    AlertModal 
   }
 }
 </script>
