@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- ul>li*3 -->
-    <ul>
+    <transitionGroup tag="ul" name="list">
       <li v-for="(todoItem,index) in propsdata" v-bind:key="todoItem.item" class="shadow">
         <i class="checkBtn fa-regular fa-square-check" v-bind:class="{checkBtnCompleted: todoItem.completed}"
          v-on:click="toggleComplete(todoItem, index)"></i>
@@ -10,7 +10,7 @@
         <i class="fa-regular fa-trash-can"></i>
       </span>
       </li>
-    </ul>
+    </transitionGroup>
   </div>
 </template>
 
@@ -24,7 +24,6 @@ export default {
     },
     toggleComplete: function(todoItem, index) {
       this.$emit('toggleItem',todoItem, index);    
-
     }
   }
 }
@@ -63,6 +62,15 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+}
+
+/* transition css */
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30px);
 }
 
 </style>
