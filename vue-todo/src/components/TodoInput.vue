@@ -26,7 +26,9 @@ export default {
     addTodo(){
       if (this.newTodoItem !==''){
         // this.$emit('이벤트 이름',인지1,인자2, ...);
-        this.$emit('addTodoItem',this.newTodoItem);
+        const text = this.newTodoItem.trim();
+        this.$store.commit('addOneItem', text);
+        console.log(text);
         this.clearInput();
       } else {
         this.showModal = !this.showModal
