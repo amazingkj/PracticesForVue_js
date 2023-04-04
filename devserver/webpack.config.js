@@ -3,6 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'none',
+  //entry: './src/App.vue',
   entry: './index.js',
   output: {
     filename: 'bundle.js',
@@ -19,12 +20,8 @@ module.exports = {
       },      
       {
         test: /\.vue$/,
-        loader: 'vue-loader',
-        options: {
-          loaders: {
-          }
-          // other vue-loader options go here
-        }
+        loader: 'vue-loader'
+        
       },
       {
         test: /\.js$/,

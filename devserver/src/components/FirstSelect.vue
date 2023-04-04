@@ -13,17 +13,16 @@ export default {
 </script>
 
 <style>
-.BtnContainer {
+.commonBtn {
   width: 8.5rem;
   height: 50px;
   line-height: 50px;
   background-color: white;
   border-radius: 5px;
   margin: 0 auto;
-}
-.commonBtn {
-  color: #e20303;
+    color: #e20303;
   /* 추가 */
   display: block;
 }
+
 </style>
