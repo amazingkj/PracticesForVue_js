@@ -22,12 +22,10 @@ export default {
   margin: 0 auto;
   /* 추가 */
   display: block;
-  
 }
 
 
 body {
- 
   font-size: 20px;
   line-height: 24px;
   color: #333;
@@ -106,6 +104,7 @@ a.button {
 }
 .btnBlueGreen.btnPush {
   box-shadow: 0px 5px 0px 0px #007144;
+  
 }.btnBlueGreen.btnFloat:before {
   background: #00AE68;
 }

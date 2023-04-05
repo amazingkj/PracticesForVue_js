@@ -3,7 +3,8 @@
     <nav>
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>  |
-      <router-link to="/add">추가하기</router-link>
+      <router-link to="/add">Add</router-link>  |
+      <router-link to="/list">List</router-link>
     </nav>
     <router-view/>
   </div>

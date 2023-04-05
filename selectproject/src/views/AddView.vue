@@ -1,15 +1,16 @@
 <template>
    <div class="add">
-   
+   <AddList></AddList>
+
   </div>
 </template>
 
 <script>
-import AddList from '@/components/SelectList.vue'
+import AddList from '@/components/SelectPutLunch.vue'
 
 
 export default {
-  name: 'AddList',
+  name: 'AddView',
   components: {
     AddList
   }
