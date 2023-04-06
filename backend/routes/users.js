@@ -1,12 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
+
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
-module.exports = router;
 //추가한 부분
 var mysql = require('mysql');
 // Connection 객체 생성 
@@ -26,27 +26,37 @@ connection.connect(function (err) {
   } 
 });
 
-router.get('/', function (req, res) {
-  connection.query('SELECT * FROM Restaurant', function (err, rows) {
-    if (err) throw err;
-    res.send(rows);
-  });
-});
+// router.get('/', function (req, res) {
+//   connection.query('SELECT * FROM Restaurant', function (err, rows) {
+//     if (err) throw err;
+//     res.send(rows);
+//   });
+// });
+// regist 
 router.post('/regist', function (req, res){
+  console.log('[POST] req.body: ', req.body);
+  console.log('[POST] req.body.Distance: ', req.body.restaurant.Distance);
+  const params = req.body;
+  //const query = `INSERT INTO Restaurant (Name, MainMenu, Distance, Nat) VALUES ('${params.rname}','${params.MainMenu}','${params.Distance}','${params.Nat}');`;
+  const query2 = 'INSERT INTO Restaurant (Name, MainMenu, Distance, Nat) VALUES ("'+params.restaurant.rname+'","'+params.restaurant.MainMenu+'","'+params.restaurant.Distance+'","'
+  + params.restaurant.Nat + '")'
+  
   const restaurant = {
-    'id': req.body.id,
-    'rname': req.body.rname,
-    'MainMenu': req.body.MainMenu,
-    'Distance': req.body.Distance,
-    'Nat': req.body.Nat
+    'rname': params.restaurant.rname,
+    'MainMenu': params.restaurant.MainMenu,
+    'Distance': params.restaurant.Distance,
+    'Nat': params.restaurant.Nat,
   };
-  connection.query('INSERT INTO Restaurant (id, Name, MainMenu, Distance, Nat) VALUES ("'
-  + restaurant.id + '", "'+restaurant.rname+'","'+restaurant.MainMenu+'","'+restaurant.Distance+'","'
-  + restaurant.Nat + '")', restaurant, function (err) {
+  console.log('[POST] store regist query: ', query2);
+  connection.query(query2, restaurant, function (err,result) {
      if (err) {
        console.error(err);
       throw err;
      }
+     console.log(result);
      res.status(200).send('success');
+     
   });  
 });
+
+module.exports = router;

@@ -1,16 +1,18 @@
 <template>
   <div>
-    <ListView></ListView>
+    <store-list></store-list>
+    
   </div>
 </template>
-import ListView from '@/components/ListView.vue'
 
 <script>
+import StoreList from '../components/StoreList.vue'
+
 export default {
-  name: 'ListView',
+  name: 'SList',
   components: {
-    ListView
-  }
+    StoreList,
+  },
 }
 </script>
 

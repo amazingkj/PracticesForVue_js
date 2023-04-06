@@ -2,20 +2,20 @@
 
   <div class="putlist" shadow>
     <form v-on:submit.prevent="saveList" >
-    <label for="id">id</label>
-    <input type="text" id="id" v-model="restaurant.id"><br>
+    <!-- <label for="id">id</label>
+    <input type="text" name="id" v-model="restaurant.id"><br> -->
 
     <label for="rname">식당이름</label>
-    <input type="text" id="rname" v-model="restaurant.rname"><br>
+    <input type="text" name="rname" v-model="restaurant.rname"><br>
 
     <label for="MainMenu">대표메뉴</label>
-    <input type="text" id="MainMenu" v-model="restaurant.MainMenu"><br>
+    <input type="text" name="MainMenu" v-model="restaurant.MainMenu"><br>
 
     <label for="Distance">거리</label>
-    <input type="text" id="Distance" v-model="restaurant.Distance"><br>
+    <input type="text" name="Distance" v-model="restaurant.Distance"><br>
 
     <label for="Nat">메뉴국적</label>
-    <input type="text" id="Nat" v-model="restaurant.Nat"><br>
+    <input type="text" name="Nat" v-model="restaurant.Nat"><br>
    
     <div class="BtnContainer">
     <button type="submit" class="button btnPush btnBlueGreen">등록하기</button>
@@ -26,11 +26,13 @@
 </template>
 
 <script>
-export default {
-   data: function() {
-      return {
+export default {   
+  data: function() {
+        // return {
+        //   restaurant: []
+        // }
+  return {
          restaurant: {
-               id: '',
                rname: '',
                MainMenu: '',
                Distance: '',
@@ -39,35 +41,44 @@ export default {
       }
    },
     methods: {
-        saveList:function() {
+        saveList:function(req,res){
+        //    this.restaurantform = {
+        //        rname: this.rname,
+        //        MainMenu: this.MainMenu,
+        //        Distance: this.Distance,
+        //        Nat: this.Nat,
+        //  }
               console.log(this.restaurant)
           this.$http.post("/api/users/regist", {
             restaurant: this.restaurant,
           })
-          .then(res=>{
-            if (res.data.success == true){
-              alert(res.data.message);
-              console.log(res.data.message);
-              //this.$router.push("/putok")
-            }
-            if (res.data.success == false){
-              alert(res.data.message);
-              console.log(res.data.message);
+          //this.$router.push("/regist") 성공 한 뒤 보내려는 router 주소
+          .then(res=> this.restaurant = res.data)          
+          .catch(error => console.log(error));
+          console.log(req);
 
-            }        
-            console.log(this.restaurant);
-            this.clearInput();
-
-          })
-          .catch(function (error){
-            console.log(error);
-            alert("error")
-          });
+          this.clearInput();
+        
+        //   .then(res=>{     
+        //     if (res.data.success == true){
+        //       alert(res.data.message);
+        //       console.log(res.data.message);
+        //       //this.$router.push("/putok")
+        //     }
+        //     if (res.data.success == false){
+        //       alert(res.data.message);
+        //       console.log(res.data.message);
+        //     }        
+          // })
+          // .catch(function (error){
+          //   console.log(error);
+          //   alert("error")
+          // });
         },
          clearInput() {
          this.restaurant = '';
          }
-    },    
+    },   
 
    
 }

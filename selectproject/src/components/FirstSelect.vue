@@ -1,8 +1,11 @@
 <template>
    <div class="BtnContainer">
-    <a href="" title="Button push blue/green" class="button btnPush btnBlueGreen" v-on:click="fiveMinuteList">5분</a>
-    <a href="" title="Button push blue/green" class="button btnPush btnBlueGreen" v-on:click="tenMinuteList">10분</a>
-    <a href="" title="Button push blue/green" class="button btnPush btnBlueGreen" v-on:click="fifteenMinuteList">15분</a>
+    <a href="" title="Button push blue/green"
+     class="button btnPush btnBlueGreen" v-on:click="fiveMinuteList">5분</a>
+    <a href="" title="Button push blue/green"
+     class="button btnPush btnBlueGreen" v-on:click="tenMinuteList">10분</a>
+    <a href="" title="Button push blue/green"
+     class="button btnPush btnBlueGreen" v-on:click="fifteenMinuteList">15분</a>
   </div>
 </template>
 

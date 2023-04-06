@@ -1,12 +1,11 @@
 <template>
    <div class="add">
-   <AddList></AddList>
-
+    <add-list></add-list>
   </div>
 </template>
 
 <script>
-import AddList from '@/components/SelectPutLunch.vue'
+import AddList from '../components/AddList.vue';
 
 
 export default {

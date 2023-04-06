@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>선택</h1>
+    <h1>선택!</h1>
   </div>
 </template>
 

@@ -6,7 +6,7 @@
       <router-link to="/add">Add</router-link>  |
       <router-link to="/list">List</router-link>
     </nav>
-    <router-view/>
+    <router-view></router-view>
   </div>
 </template>
 
