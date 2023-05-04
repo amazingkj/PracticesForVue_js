@@ -1,26 +1,21 @@
 <template>
-<div>    
-  <p v-for="job in this.$store.state.jobs">
-      <a v-bind:href="job.url">{{job.title}}</a>
-      <small>{{job.time_ago}} , {{ job.domain }}</small>
-  </p>
-  
-</div>
-  
+      <div>
+        <list-item></list-item>
+      </div>
 </template>
 
 <script>
+import ListItem from '../src/components/ListItem.vue';
+import ListMixin from '../src/mixins/ListMixin.js';
+//import bus from '../utils/bus.js';
 
-import { fetchJobsList } from '../src/api/index.js' 
-//import { FETCH_JOBS } from '../src/store/actions.js';
 export default {
-    created() {
-        this.$store.dispatch('FETCH_JOBS');
-    }
-
+    components: {
+    ListItem,
+   },
+  //  mounted() {
+  //  bus.$emit('end:spinner'); 
+  // }
+    mixins: [ListMixin]
 }
 </script>
-
-<style>
-
-</style>

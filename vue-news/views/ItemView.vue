@@ -1,19 +1,20 @@
 <template>
   <div>
     <section>
-  
-        <div class="user-container">
-        <font-awesome-icon icon="fa-solid fa-user" />
-        <i class="fa-solid fa-user"></i>
-        </div>
-        <div class="user-description">
-        <router-link :to="`/user/${fetchedItem.user}`">{{ fetchedItem.user }}</router-link>
-        </div>
-        <div class="time">{{ fetchedItem.time_ago }}</div>
-     
-      <h2>{{ fetchedItem.title }}</h2>
+      <!-- 사용자 정보  -->
+      <user-profile :info="fetchedItem">
+        <!-- <div slot="username">{{fetchedItem.user}}</div> -->
+        <router-link slot="username" :to="`/user/${fetchedItem.user}`">
+        {{fetchedItem.user}}
+        </router-link>
+        <template slot="time">{{ 'Posted '+ fetchedItem.time_ago }}</template>
+      </user-profile>
     </section>
     <section>
+      <h2>{{ fetchedITem.title }}</h2>
+    </section>
+    <section>
+      <!-- 질문 댓글 -->
       <div v-html="fetchedItem.content"></div>
     </section>
   </div>
@@ -21,8 +22,10 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import UserProfile from '../src/components/UserProfile.vue';
 
 export default {
+  components: { UserProfile },
     computed: {
 //        idInfo() {
 //            return this.$store.state.id;

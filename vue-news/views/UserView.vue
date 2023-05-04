@@ -1,15 +1,19 @@
 <template>
   <div>
-    <p>name : {{ userInfo.id }}</p>
-    <p>karma : {{ userInfo.karma }}</p>
-    <p>created : {{ userInfo.created }}</p>
+    <user-profile :info="userInfo"></user-profile>
+    <div slot="username">{{ userInfo.id }}</div>
+    <span slot="time">{{ 'Joined ' + userInfo.created}}, </span>
+    <span slot="karma">{{ userInfo.karma }}</span>
   </div>
 </template>
 
 <script>
-//import axios from 'axios';
+import UserProfile from '../src/components/UserProfile.vue';
 
 export default {
+  components: { 
+    UserProfile,
+    },
     computed: {
         userInfo() {
             return this.$store.state.user;

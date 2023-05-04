@@ -1,26 +1,20 @@
 <template>
   <div>
-  <p v-for="item in this.$store.state.news">
-      <a v-bind:href="item.url">{{item.title}}</a>
-      <small>{{item.time_ago}} by 
-        <!--<router-link v-bind:to="'/user/'+ item.user">{{ item.user }}-->
-        <router-link v-bind:to="`/user/${item.user}`">{{ item.user }}
-        </router-link></small>
-  </p>
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-//import { fetchNewsList } from '../src/api/index.js';
-//import { FETCH_NEWS } from '../src/store/actions.js';
+import ListItem from '../src/components/ListItem.vue';
+//import bus from '../src/utils/bus.js';
+import ListMixin from '../src/mixins/ListMixin.js';
+
 export default {
-created() {
-  this.$store.dispatch('FETCH_NEWS');
-  //this.$store.dispatch(FETCH_NEWS);
+  components: {
+    ListItem,
+  },
+  mixins: [ListMixin],
 }
-}
+
 </script>
 
-<style>
-
-</style>

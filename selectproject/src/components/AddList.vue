@@ -49,7 +49,7 @@ export default {
         //        Nat: this.Nat,
         //  }
               console.log(this.restaurant)
-          this.$http.post("/api/users/regist", {
+          this.$axios.post("/api/users/regist", {
             restaurant: this.restaurant,
           })
           //this.$router.push("/regist") 성공 한 뒤 보내려는 router 주소

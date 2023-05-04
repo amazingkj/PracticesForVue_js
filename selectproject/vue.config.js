@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  lintOnSave:false,
+  lintOnSave: false,
   transpileDependencies: true,
   devServer: { //① api 요청이 있을때 어디에서 처리할지를 설정
     proxy: { 
