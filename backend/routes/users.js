@@ -32,13 +32,15 @@ connection.connect(function (err) {
 //     res.send(rows);
 //   });
 // });
+
+
+
 // regist 
 router.post('/regist', function (req, res){
   console.log('[POST] req.body: ', req.body);
   console.log('[POST] req.body.Distance: ', req.body.restaurant.Distance);
   const params = req.body;
-  //const query = `INSERT INTO Restaurant (Name, MainMenu, Distance, Nat) VALUES ('${params.rname}','${params.MainMenu}','${params.Distance}','${params.Nat}');`;
-  const query2 = 'INSERT INTO Restaurant (Name, MainMenu, Distance, Nat) VALUES ("'+params.restaurant.rname+'","'+params.restaurant.MainMenu+'","'+params.restaurant.Distance+'","'
+  const query = 'INSERT INTO Restaurant (Name, MainMenu, Distance, Nat) VALUES ("'+params.restaurant.rname+'","'+params.restaurant.MainMenu+'","'+params.restaurant.Distance+'","'
   + params.restaurant.Nat + '")'
   
   const restaurant = {
@@ -47,8 +49,8 @@ router.post('/regist', function (req, res){
     'Distance': params.restaurant.Distance,
     'Nat': params.restaurant.Nat,
   };
-  console.log('[POST] store regist query: ', query2);
-  connection.query(query2, restaurant, function (err,result) {
+  console.log('[POST] store regist query: ', query);
+  connection.query(query, restaurant, function (err,result) {
      if (err) {
        console.error(err);
       throw err;
@@ -58,5 +60,65 @@ router.post('/regist', function (req, res){
      
   });  
 });
+
+
+
+// rlist 
+router.post('/rlist', function (req, res){
+  console.log('[POST] res.body: ', res.body);
+  console.log('[POST] res.body.Distance: ', res.body.restaurant.Distance);
+  const params = res.body;
+  const query = 'SELECT * FROM Restaurant'
+  
+  const restaurant = {
+    'id': params.restaurant.id,
+    'rname': params.restaurant.rname,
+    'MainMenu': params.restaurant.MainMenu,
+    'Distance': params.restaurant.Distance,
+    'Nat': params.restaurant.Nat,
+    'Date': params.restaurant.Date,
+  };
+  console.log('[POST] store regist query: ', query);
+  connection.query(query, (err,result) => {
+    if (!err) {
+      res.send({ result });
+      res.status(200).send('success');
+      console.log(result);
+    } else console.log(err);
+
+    
+    
+     
+  });  
+});
+
+// rlistcnt
+router.post('/rlistcnt', function (req, res){
+  console.log('[POST] res.body: ', res.body);
+  console.log('[POST] res.body.Distance: ', res.body.restaurant.Distance);
+  const params = res.body;
+  const query = 'SELECT * FROM Restaurant'
+  
+  const restaurant = {
+    'id': params.restaurant.id,
+    'rname': params.restaurant.rname,
+    'MainMenu': params.restaurant.MainMenu,
+    'Distance': params.restaurant.Distance,
+    'Nat': params.restaurant.Nat,
+    'Date': params.restaurant.Date,
+  };
+  console.log('[POST] store regist query: ', query);
+  connection.query(query, restaurant, unction f(err,result) {
+    if (!err) {
+      res.send({ result });
+      res.status(200).send('success');
+      console.log(result);
+    } else console.log(err);
+
+    
+     
+  });  
+});
+
 
 module.exports = router;

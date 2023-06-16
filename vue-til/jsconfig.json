@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./src/*"
+      ],
+    }
+  },
+  "exclude": [ //라이브러리와 빌드 파일 제외하고
+    "node_modules",
+    "dist"
+  ],
+  "extensions": [
+    ".vue"
+  ]
+}
